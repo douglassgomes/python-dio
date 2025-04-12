@@ -78,14 +78,18 @@ def sacar():
     hora = data_hora.strftime("%H:%M")
     limite = 500
     LIMITE_SAQUES = 3
+    excedeu_saques = numero_saques >= LIMITE_SAQUES
 
     verificar_data()
 
-    # Verifica se excedeu o limite de operações diárias
+    # Verifica se excedeu o limite de operações e saque diários
     excedeu_operacoes_dia = numero_operacoes_dia >= LIMITE_OPERACOES_DIA
     
     if excedeu_operacoes_dia:
         print(f"Operação não realizada! Você excedeu o limite de {LIMITE_OPERACOES_DIA} operações no dia de hoje.")
+        return
+    elif excedeu_saques:
+        print(f"Operação não realizada! Número máximo de {LIMITE_SAQUES} saques diários excedido.")
         return
     
     # Tratamento de erro caso o valor informado não seja número
@@ -99,14 +103,11 @@ def sacar():
     # Variáveis para verificação das demais condições de saque
     excedeu_saldo = valor > saldo
     excedeu_limite = valor > limite
-    excedeu_saques = numero_saques >= LIMITE_SAQUES
 
     if excedeu_saldo:
         print("Operação não realizada! Conta não tem saldo suficiente.")
     elif excedeu_limite:
         print("Operação não realizada! Valor do saque excedeu o limite.")
-    elif excedeu_saques:
-        print("Operação não realizada! Número máximo de saques excedido.")
     elif valor > 0:
         saldo -= valor
         extrato += f"Saque: R$ {valor:.2f} => Realizado em {data}, às {hora}.\n"
@@ -123,6 +124,7 @@ def exibe_extrato():
     data_hora = datetime.now()
     data = data_hora.strftime("%d/%m/%Y")
     hora = data_hora.strftime("%H:%M")
+    exibe_operacoes = numero_operacoes_dia+1
 
     verificar_data()
 
@@ -135,7 +137,7 @@ def exibe_extrato():
     print("\n========================= EXTRATO =========================")
     print("Não foram realizadas movimentações." if not extrato else extrato)
     print(f"\nSaldo: R$ {saldo:.2f} em {data}, às {hora}.")
-    print(f"Quantidade de operações diárias: {numero_operacoes_dia}")
+    print(f"Quantidade de operações diárias: {exibe_operacoes}")
     print("===========================================================")
     numero_operacoes_dia += 1
     
