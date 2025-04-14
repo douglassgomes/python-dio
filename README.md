@@ -2,12 +2,17 @@
 
 ## 🏦 Conta Bancária
 
-### Escopo do Projeto
+### Escopo do Projeto (v2)
 
-Este primeiro projeto teve como objetivo a criação de um código em linguagem Python para realizar operações simples em uma conta bancária.
+Este segundo projeto teve como objetivo a alteração do código em linguagem Python do primeiro (constante na branch main) para acrescentar o seguinte:
+- Estabelecer um limite de 10 transações diárias para uma conta;
+- Se o usuário tentar fazer uma transação após atingir o limite, deve ser informado que ele excedeu o número de transações permitidas para aquele dia; e
+- Mostre no extrato, a data e hora de todas as transações.
 
-### 💸📄 Operações e Condições (Iniciais)
+### 💸📄 Operações e Condições
 
+#### ⚠️ Limite geral de 10 operações diárias. (v2)
+  
 #### Depósito
 
 - Não podem ocorrer depósitos de valores iguais ou menores que zero;
@@ -29,11 +34,16 @@ Este primeiro projeto teve como objetivo a criação de um código em linguagem 
 
 ### 💡 Ajustes e Melhorias Implementados
 
-Além das condições inicialmente propostas, adicionei algumas melhorias, tais como:
 - O código foi segmentado de modo que cada operação fosse realizada por uma **função**;
 - Adicionado bloco **try / exception** para tratar a entrada de valores diferentes de números nas operações de depósito e saque, exibindo mensagem de orientação em caso de erro do usuário;
 - Adicionada conversão para minúsculo da entrada da opção de menu, evitando assim que que a opção não corresponda caso o usuário a digite em maiúscula;
-- Adicionada mensagem de despedida, caso a opção finalizar seja selecionada.
+- Adicionada mensagem de despedida, caso a opção finalizar seja selecionada;
+- **Importei a biblioteca datetime para utilizar data e hora; (v2)**
+- **Incluí instruções para registro da data e hora dos depósitos e saques no extrato; (v2)**
+- **Incluí as variáveis globais numero_operacoes_dia e data_atual, bem como a constante LIMITE_OPERACOES_DIA; (v2)**
+- **Incluí função para verificar a data e, se o dia for diferente, zerar os contadores de operações; (v2)**
+- **Incluí mensagens informando quando as operações foram bem sucedidas; e (v2)**
+- **Incluí linha ao final do extrato que mostra o total de operações realizadas, de modo a permitir que o usuário tenha uma ideia de quantas ainda faltam. (v2)**
 
 ### 🛠️ Tecnologias e Ferramentas Utilizadas
 
@@ -48,6 +58,7 @@ Além das condições inicialmente propostas, adicionei algumas melhorias, tais 
 
 - [Digital Inovation One - DIO](https://web.dio.me/)
 - [Repositório DIO - Trilha Python](https://github.com/digitalinnovationone/trilha-python-dio)
+- [Documentação do Python](https://docs.python.org)
 
 </br>[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 
