@@ -42,8 +42,11 @@ Este segundo projeto teve como objetivo a alteração do código em linguagem Py
 - **Incluí instruções para registro da data e hora dos depósitos e saques no extrato; (v2)**
 - **Incluí as variáveis globais numero_operacoes_dia e data_atual, bem como a constante LIMITE_OPERACOES_DIA; (v2)**
 - **Incluí função para verificar a data e, se o dia for diferente, zerar os contadores de operações; (v2)**
-- **Incluí mensagens informando quando as operações foram bem sucedidas; e (v2)**
-- **Incluí linha ao final do extrato que mostra o total de operações realizadas, de modo a permitir que o usuário tenha uma ideia de quantas ainda faltam. (v2)**
+- **Incluí mensagens informando quando as operações foram bem sucedidas; (v2)**
+- **Incluí linha ao final do extrato que mostra o total de operações realizadas, de modo a permitir que o usuário tenha uma ideia de quantas ainda faltam; (v2)**
+- **Criei função específica (verificar_limite_operacoes_dia) para reaproveitar tal verificação nas funções de depósito, saque e extrato; (v3)**
+- **Criei função específica (obter_valor) para obtenção dos valores de depósito e saque, de modo a reaproveitar o tratamento de erros; e (v3)**
+- **Criei as duas funções adicionais solicitadas no desafio: criar_cliente e criar_conta. Bem como a função filtrar_cliente, da qual as duas anterires dependem. (v3)**
 
 ### 🛠️ Tecnologias e Ferramentas Utilizadas
 
