@@ -2,12 +2,13 @@
 
 ## 🏦 Conta Bancária
 
-### Escopo do Projeto (v2)
+### Escopo do Projeto (v4)
 
-Este segundo projeto teve como objetivo a alteração do código em linguagem Python do primeiro (constante na branch main) para acrescentar o seguinte:
-- Estabelecer um limite de 10 transações diárias para uma conta;
-- Se o usuário tentar fazer uma transação após atingir o limite, deve ser informado que ele excedeu o número de transações permitidas para aquele dia; e
-- Mostre no extrato, a data e hora de todas as transações.
+Este quarto projeto teve como objetivo a alteração do código em linguagem Python dos projetos anteriores (constantes nas outras branchs) de modo a implementar o seguinte:
+
+- atualizar a implementação do sistema bancário, para armazenar os dados de clientes e contas bancárias em objetos ao invés de dicionários, seguindo o modelo de classes UML abaixo.
+
+![Diagrama UML](./docs/images/uml_desafio_python.png "Diagrama de Classes do Sistema Bancário (v4)")
 
 ### 💸📄 Operações e Condições
 
