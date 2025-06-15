@@ -33,21 +33,71 @@ Este quarto projeto teve como objetivo a alteração do código em linguagem Pyt
 - Se o extrato estiver em branco, exibir a mensagem: Não foram realizadas movimentações.
 - os valores devem ser exibidos utilizando o formato R$ XXX.XX. Exemplo: 1500.45 = R$ 1500.45
 
-### 💡 Ajustes e Melhorias Implementados
+### 💡 Ajustes e Melhorias Implementados (v4)
 
-- O código foi segmentado de modo que cada operação fosse realizada por uma **função**;
-- Adicionado bloco **try / exception** para tratar a entrada de valores diferentes de números nas operações de depósito e saque, exibindo mensagem de orientação em caso de erro do usuário;
-- Adicionada conversão para minúsculo da entrada da opção de menu, evitando assim que que a opção não corresponda caso o usuário a digite em maiúscula;
-- Adicionada mensagem de despedida, caso a opção finalizar seja selecionada;
-- **Importei a biblioteca datetime para utilizar data e hora; (v2)**
-- **Incluí instruções para registro da data e hora dos depósitos e saques no extrato; (v2)**
-- **Incluí as variáveis globais numero_operacoes_dia e data_atual, bem como a constante LIMITE_OPERACOES_DIA; (v2)**
-- **Incluí função para verificar a data e, se o dia for diferente, zerar os contadores de operações; (v2)**
-- **Incluí mensagens informando quando as operações foram bem sucedidas; (v2)**
-- **Incluí linha ao final do extrato que mostra o total de operações realizadas, de modo a permitir que o usuário tenha uma ideia de quantas ainda faltam; (v2)**
-- **Criei função específica (verificar_limite_operacoes_dia) para reaproveitar tal verificação nas funções de depósito, saque e extrato; (v3)**
-- **Criei função específica (obter_valor) para obtenção dos valores de depósito e saque, de modo a reaproveitar o tratamento de erros; e (v3)**
-- **Criei as duas funções adicionais solicitadas no desafio: criar_cliente e criar_conta. Bem como a função filtrar_cliente, da qual as duas anterires dependem. (v3)**
+1. Identificação das Classes Principais
+
+    A partir do diagrama UML, identifiquei as classes principais:
+
+    - PessoaFisica: Contém os dados básicos de uma pessoa (CPF, nome, data de nascimento)
+    - Cliente: Representa um cliente do banco com seus dados e relação com suas contas
+    - Conta: Classe base para contas bancárias
+    - ContaCorrente: Especialização de Conta com limites de saque
+    - Historico: Mantém o registro de transações
+    - Transacao: Interface (classe abstrata) para diferentes tipos de transações
+    - Deposito e Saque: Implementações concretas de Transacao
+
+2. Transformação dos Dicionários em Objetos, pois no código original, os dados eram armazenados em dicionários simples.
+
+3. Implementação do Padrão de Projeto Strategy
+
+    Seguindo o diagrama UML implementei o uso do padrão Strategy para as transações, através da classe abstrata Transacao e suas subclasses Deposito e Saque, cada uma encapsulando seu comportamento específico.
+
+4. Encapsulamento da Lógica
+
+    Encapsulei a lógica das operações bancárias dentro das respectivas classes:
+
+    - A lógica de sacar foi movida para o método sacar() da classe Conta e especializada na ContaCorrente
+    - A lógica de depositar foi movida para o método depositar() da classe Conta
+    - O controle do histórico foi encapsulado na classe Historico
+
+5. Organização do Fluxo Principal
+
+    Criei uma classe SistemaBancario que organiza o fluxo principal do programa, substituindo a função main() do código original. Isso permite:
+
+    - Melhor organização do código
+    - Manutenção do estado do sistema em atributos de classe
+    - Possibilidade de instanciar múltiplos sistemas, se necessário no futuro.
+
+6. Outras Melhorias Implementadas
+
+    Além da transformação para Orientação a Objetos, implementei algumas outras melhorias:
+
+    - Tipagem: Utilizei type hints para melhorar a legibilidade e robustez do código
+    - Seleção de Conta: Adicionei funcionalidade para selecionar entre múltiplas contas de um cliente
+    - Abstração: Utilizei métodos abstratos para garantir implementação consistente de transações
+
+7. Detalhes das Classes Implementadas
+
+    - **PessoaFisica**: Armazena os dados básicos de identificação de uma pessoa.
+    - **Cliente**: Encapsula a relação entre uma pessoa física e suas contas bancárias, bem como os métodos para realizar transações.
+    - **Conta**: Classe base que implementa a funcionalidade comum a todos os tipos de conta:
+
+        - Manutenção de saldo
+        - Operações básicas de saque e depósito
+        - Relação com cliente e histórico
+
+    - **ContaCorrente**: Especialização de Conta que adiciona:
+
+        - Limite de valor por saque
+        - Controle do número de saques diários
+        - Verificações adicionais durante operações de saque
+
+    - **Historico**: Mantém registro das transações realizadas em uma conta.
+
+    - **Transacao (e subclasses)**: Utiliza o padrão Strategy para encapsular os diferentes tipos de transações bancárias, com o método registrar() implementando a lógica específica de cada tipo.
+
+    - **SistemaBancario**: Coordena as operações do sistema bancário, mantendo o estado do sistema e gerenciando a interação com o usuário.
 
 ### 🛠️ Tecnologias e Ferramentas Utilizadas
 
